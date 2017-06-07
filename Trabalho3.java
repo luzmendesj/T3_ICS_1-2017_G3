@@ -20,6 +20,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.JFileChooser;
 import javax.swing.*;
 import java.awt.BorderLayout;
+import static java.lang.Math.pow;
 
 //Packages de Tipos Abstratos de Dados (TADs)
 import java.util.List;
@@ -30,7 +31,7 @@ public class Trabalho3 implements Runnable
 {
     public Sequencer sequenciador = null;
     public Sequence sequencia = null;
-    List<String> Informacoes = new ArrayList<String>();
+    List<String> Informacoes = new ArrayList<>();
     
     public static void main(String[] args){
 
@@ -155,18 +156,24 @@ public class Trabalho3 implements Runnable
                 MidiEvent   e          = trilha.get(j);
                 MidiMessage mensagem   = e.getMessage();
                 long        tique      = e.getTick();
+                String      infoAdicional = "";
 
-                int n = mensagem.getStatus();
+                int byte1 = mensagem.getStatus();
+                
+                int tamanho = mensagem.getLength();
+                byte[] msgBytes = new byte[tamanho];
+                msgBytes = mensagem.getMessage();
 
                 //f = fo.2^(nota/12) para Note On, conversão de binário para frequência 
                 //para uso posterior na classe sintese.Nota a ser adicionada a Melodia
 
-                String nomecomando = ""+n;
+                String nomecomando = ""+msgBytes[0];
 
-                switch(n)
+                switch(byte1)
                 {
                     case 0b10000000:    nomecomando = "noteOFF"; break;
-                    case 0b10010000:    nomecomando = "noteON"; break; 
+                    case 0b10010000:    nomecomando = "noteON"; 
+                                        infoAdicional = "       Frequencia: " + 55f*pow(2, msgBytes[1]/12) ; break; 
                     case 0b10110000:    nomecomando = "Control Change"; break;
                     case 0b11000000:    nomecomando = "Program Change"; break;
                     case 0b11100000:    nomecomando = "Pitch Bend"; break;
@@ -176,6 +183,7 @@ public class Trabalho3 implements Runnable
                 }
 
                 Informacoes.add("       Mensagem: " + nomecomando );
+                Informacoes.add(infoAdicional);
                 Informacoes.add("       Instante: " + tique );
                 Informacoes.add("  ------------------------------------------");
             }
