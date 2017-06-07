@@ -1,9 +1,51 @@
+/*
+Trabalho 3 de Introdução à Computação Sônica
+
+Jorge Mendes        12/0014599
+Marcos Fleury       12/00
+Lucília Oliveira    12/00
+Paulo Santos        12/005
+*/
+
+//Packages de Som
+import sintese.*;
+import javax.sound.midi.*;
+
+//Packages de I/O
 import java.io.File;
 import java.io.IOException;
-import javax.swing.filechooser.FileFilter;
 
-public class Trabalho1 extends JFrame implements Runnable
+//Packages de Interface
+import javax.swing.filechooser.FileFilter;
+import javax.swing.JFileChooser;
+import javax.swing.*;
+import java.awt.BorderLayout;
+
+//Packages de Tipos Abstratos de Dados (TADs)
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Trabalho3 implements Runnable
 {
+    public Sequencer sequenciador = null;
+    public Sequence sequencia = null;
+    List<String> Informacoes = new ArrayList<String>();
+    
+    public static void main(String[] args){
+
+        Trabalho3 var = new Trabalho3();
+        Thread     thread  = new Thread(var);
+        thread.start();
+        var.abra();
+        var.mostraInfo();
+    }
+
+    public Trabalho3(){
+        sequenciador = null;
+        sequencia = null;
+    }
+
     public void abra(){
             File arquivoMidi;
             JFileChooser escolha = new JFileChooser(".");
@@ -42,13 +84,102 @@ public class Trabalho1 extends JFrame implements Runnable
                     }
 
                     sequencia = MidiSystem.getSequence(arquivoMidi);
-                    getDados(0);
                     sequenciador = MidiSystem.getSequencer();
                     sequenciador.setSequence(sequencia);
                     sequenciador.open();
 
             }catch (Throwable e1) {
-                System.out.println("Erro em carregaArquivoMidi: "+ e1.toString());
+                System.out.println("Erro ao carregar arquivo Midi: "+ e1.toString());
             }
         }
+
+    public void run(){
+        
+        while(true)
+        {
+
+            try{ 
+                espera(1000);
+            }
+            catch(Exception e) { 
+                System.out.println(e.getMessage());
+            }
+                 
+        }
+
+
+    }
+
+    public void mostraInfo(){
+        Informacoes = getMidi();
+        String[] info = new String[Informacoes.size()];
+        info = Informacoes.toArray( info );
+
+        JFrame janelaInfo = new JFrame("Informa\u00E7\u00f5es do Arquivo");
+        //janelaInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JList<String> tabela = new JList<String>( info );
+
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabela.setLayoutOrientation(JList.VERTICAL);
+        tabela.setVisibleRowCount(-1);
+
+        JScrollPane painel = new JScrollPane(tabela);
+        //painel.getViewport().add(tabela);
+
+        janelaInfo.getContentPane().add( painel, BorderLayout.CENTER );
+
+        janelaInfo.pack();
+        janelaInfo.setSize(400, 600);
+        janelaInfo.setVisible(true);
+
+        /*for (Iterator<String> it = Informacoes.iterator(); it.hasNext();) {
+            System.out.println(it.next());
+        }*/
+    }
+
+    public List<String> getMidi() {
+        Track[] trilhas = sequencia.getTracks();
+        Informacoes = new ArrayList<String>();
+
+        for(int i=0; i<trilhas.length; i++)
+        {
+            Informacoes.add("  In\u00edcio da trilha n\u00ba " + i + " **********************");
+            Informacoes.add("  ------------------------------------------");
+            Track trilha =  trilhas[i];
+
+            for(int j=0; j<trilha.size(); j++)
+            {
+                Informacoes.add("  Trilha n\u00ba " + i );
+                Informacoes.add("  Evento n\u00ba " + j);
+                MidiEvent   e          = trilha.get(j);
+                MidiMessage mensagem   = e.getMessage();
+                long        tique      = e.getTick();
+
+                int n = mensagem.getStatus();
+
+                String nomecomando = ""+n;
+
+                switch(n)
+                {
+                    case 128: nomecomando = "noteON"; break;
+                    case 144: nomecomando = "noteOFF"; break;
+                    case 255: nomecomando = "MetaMensagem  (a ser decodificada)"; break;
+                    //---(introduzir outros casos)
+                }
+
+                Informacoes.add("       Mensagem: " + nomecomando );
+                Informacoes.add("       Instante: " + tique );
+                Informacoes.add("  ------------------------------------------");
+            }
+        }
+
+        return Informacoes;
+    }
+
+    void espera(int milisegundos){
+            try {Thread.sleep(milisegundos);
+            } catch(InterruptedException e){ }
+
+    }
 }
