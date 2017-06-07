@@ -158,13 +158,20 @@ public class Trabalho3 implements Runnable
 
                 int n = mensagem.getStatus();
 
+                //f = fo.2^(nota/12) para Note On, conversão de binário para frequência 
+                //para uso posterior na classe sintese.Nota a ser adicionada a Melodia
+
                 String nomecomando = ""+n;
 
                 switch(n)
                 {
-                    case 128: nomecomando = "noteON"; break;
-                    case 144: nomecomando = "noteOFF"; break;
-                    case 255: nomecomando = "MetaMensagem  (a ser decodificada)"; break;
+                    case 0b10000000:    nomecomando = "noteOFF"; break;
+                    case 0b10010000:    nomecomando = "noteON"; break; 
+                    case 0b10110000:    nomecomando = "Control Change"; break;
+                    case 0b11000000:    nomecomando = "Program Change"; break;
+                    case 0b11100000:    nomecomando = "Pitch Bend"; break;
+                    case 255:           nomecomando = "Mensagem Desconhecida"; break;
+                    default:            nomecomando = "MetaMensagem  (a ser decodificada)"; break;
                     //---(introduzir outros casos)
                 }
 
