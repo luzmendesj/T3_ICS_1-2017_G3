@@ -37,7 +37,7 @@ public class GeraJava{
 	}
 	
 	public void criaNota(float duracaoNota, float frequencia, float intensidade){
-		writer.println("\t\tnovaNota = new Nota(" + Math.abs(duracaoNota) + ", "
+		writer.println("\t\tnovaNota = new Nota(" + Math.abs(duracaoNota)/1000 + ", "
 				+ Math.abs(frequencia) + ", " + Math.abs(intensidade) + ");");
 		writer.println("\t\tmelodiaPronta.addNota(novaNota);");
 	}
