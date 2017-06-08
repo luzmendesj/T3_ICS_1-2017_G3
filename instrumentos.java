@@ -3,6 +3,20 @@ import javax.sound.midi.*;
 
 class instrumentos{
 	   
+    // public static String[][] instru1 = new String[4][];
+    public static String[][] instru1 = { { "1", "1", "0.0", "0", "10" },
+                                         { "2", "2", "0.0", "0", "5" },
+                                         { "3", "3", "0.0", "0", "3" },
+                                         { "Ganho Total", "", "", "", "4" },
+                                        };
+    public static String[][] instru2 = new String[4][];
+    public static String[][] instru3 = new String[4][];
+    public static String[][] instru4 = new String[4][];
+    public static String[][] instru5 = new String[4][];
+    public static String[][] instru6 = new String[4][];
+    public static String[][] instru7 = new String[4][];
+    public static String[][] instru8 = new String[4][];
+    
 	public static Dispositivo instrumento1(){
 		Curva curva1, curva2, curva3;
 		float ganho1, ganho2, ganho3, ganhoTotal;
@@ -67,18 +81,35 @@ class instrumentos{
 	    uh1.setLambda(lambda1);
 	    uh1.setFase(fase1);
 	    uh1.setGanho(ganho1);
+            instru1[0][0] = String.valueOf( h1 );
+            instru1[0][1] = String.valueOf( lambda1 );
+            instru1[0][2] = String.valueOf( fase1 );
+            instru1[0][3] = String.valueOf( ganho1 );
 
 	    uh2.setEnvoltoria(env2);
 	    uh2.setH(h2);
 	    uh2.setLambda(lambda2);
 	    uh2.setFase(fase2);
 	    uh2.setGanho(ganho2);
+            instru1[1][0] = String.valueOf( h2 );
+            instru1[1][1] = String.valueOf( lambda2 );
+            instru1[1][2] = String.valueOf( fase2 );
+            instru1[1][3] = String.valueOf( ganho2 );
 	     
 	    uh3.setEnvoltoria(env3);
 	    uh3.setH(h3);
 	    uh3.setLambda(lambda3);
 	    uh3.setFase(fase3);
 	    uh3.setGanho(ganho3);
+            instru1[2][0] = String.valueOf( h3 );
+            instru1[2][1] = String.valueOf( lambda3 );
+            instru1[2][2] = String.valueOf( fase3 );
+            instru1[2][3] = String.valueOf( ganho3 );
+            
+            instru1[3][0] = "Ganho Total";
+            instru1[3][1] = "";
+            instru1[3][2] = "";
+            instru1[3][3] = String.valueOf( ganhoTotal );
 
 	    ins = new InstrumentoAditivo();
 
@@ -154,18 +185,35 @@ class instrumentos{
 	    uh1.setLambda(lambda1);
 	    uh1.setFase(fase1);
 	    uh1.setGanho(ganho1);
+            instru2[0][0] = String.valueOf( h1 );
+            instru2[0][1] = String.valueOf( lambda1 );
+            instru2[0][2] = String.valueOf( fase1 );
+            instru2[0][3] = String.valueOf( ganho1 );
 
 	    uh2.setEnvoltoria(env2);
 	    uh2.setH(h2);
 	    uh2.setLambda(lambda2);
 	    uh2.setFase(fase2);
 	    uh2.setGanho(ganho2);
+            instru2[1][0] = String.valueOf( h2 );
+            instru2[1][1] = String.valueOf( lambda2 );
+            instru2[1][2] = String.valueOf( fase2 );
+            instru2[1][3] = String.valueOf( ganho2 );
 	     
 	    uh3.setEnvoltoria(env3);
 	    uh3.setH(h3);
 	    uh3.setLambda(lambda3);
 	    uh3.setFase(fase3);
 	    uh3.setGanho(ganho3);
+            instru2[2][0] = String.valueOf( h3 );
+            instru2[2][1] = String.valueOf( lambda3 );
+            instru2[2][2] = String.valueOf( fase3 );
+            instru2[2][3] = String.valueOf( ganho3 );
+            
+            instru2[3][0] = "Ganho Total";
+            instru2[3][1] = "";
+            instru2[3][2] = "";
+            instru2[3][3] = String.valueOf( ganhoTotal );
 
 	    ins = new InstrumentoAditivo();
 
@@ -704,6 +752,5 @@ class instrumentos{
 	    
 	    return ins;
 	}
-	
 	
 }
