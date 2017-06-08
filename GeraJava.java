@@ -54,6 +54,7 @@ public class GeraJava{
 		writer.println("\t\tsom1.setNome(\"instrumento1\");");
 		writer.println("\t\tsom1.salvawave();");
 		writer.println("\t\tsom1.visualiza();");
+		writer.println("\t\tsom1.salvawave();");
 		writer.println("\t}");
 		writer.println("}");
 		writer.close();
