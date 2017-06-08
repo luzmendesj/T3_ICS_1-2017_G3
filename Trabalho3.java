@@ -184,10 +184,13 @@ public class Trabalho3 implements Runnable
         painel.add( SCROLLpainel );
 
         janelaInfo.getContentPane().add( painel, BorderLayout.CENTER );
+        
+        List<String> dados2 = getMidi();
 
         janelaInfo.pack();
         janelaInfo.setSize(600, 700);
         janelaInfo.setVisible(true);
+        
     }
     
     public void mostraInfo(){
@@ -196,7 +199,6 @@ public class Trabalho3 implements Runnable
         String[] colunas = {"Trilha", "Evento", "Mensagem", "Instante", "Info Adicional"};
         
         String[][] dados = getMidiMatriz();
-        List<String> dados2 = getMidi();
         
         JTable tabela = new JTable(dados, colunas);
         TableColumn column = null;

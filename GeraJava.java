@@ -44,7 +44,7 @@ public class GeraJava{
 	}
 	
 	public void defineInstrumento(int instrumento){
-		instrumento += numMusica%8 + 1;
+		instrumento += numMusica%8;
 		writer.println("\t\tInstrumentoAditivo ins = (InstrumentoAditivo)instrumentos.instrumento"
 				+ instrumento + "();");
 	}
