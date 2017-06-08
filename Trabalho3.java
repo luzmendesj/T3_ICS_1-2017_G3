@@ -157,8 +157,8 @@ public class Trabalho3 implements Runnable
             Informacoes.add("  In\u00edcio da trilha n\u00ba " + i + " **********************");
             Informacoes.add("  ------------------------------------------");
             Track trilha =  trilhas[i];
-           noteON_v.add(i, new ArrayList<NoteON>());
-           noteOFF_v.add(i, new ArrayList<NoteOFF>());
+           noteON_v.add(new ArrayList<NoteON>(16));
+           noteOFF_v.add(new ArrayList<NoteOFF>(16));
             //Para todos os eventos na trilha
             for(int j=0; j<trilha.size(); j++)
             {
@@ -210,7 +210,8 @@ public class Trabalho3 implements Runnable
             Informacoes.add("  Fim da trilha n\u00ba " + i + " **********************");
             Informacoes.add("  ------------------------------------------");
         }
-
+        Informacoes.add(noteON_v.toString());
+        Informacoes.add(noteOFF_v.toString());
         return Informacoes;
     }
     
