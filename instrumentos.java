@@ -7,15 +7,44 @@ class instrumentos{
     public static String[][] instru1 = { { "1", "1", "0.0", "0", "10" },
                                          { "2", "2", "0.0", "0", "5" },
                                          { "3", "3", "0.0", "0", "3" },
-                                         { "Ganho Total", "", "", "", "4" },
+                                         { "Ganho Total", "-", "-", "-", "4" },
                                         };
-    public static String[][] instru2 = new String[4][];
-    public static String[][] instru3 = new String[4][];
-    public static String[][] instru4 = new String[4][];
-    public static String[][] instru5 = new String[4][];
-    public static String[][] instru6 = new String[4][];
-    public static String[][] instru7 = new String[4][];
-    public static String[][] instru8 = new String[4][];
+    public static String[][] instru2 =    { { "1", "1", "0.0", "0", "10" },
+								            { "2", "5", "0.0", "0", "5" },
+								            { "3", "9", "0.0", "0", "3" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru3 =    { { "1", "1", "0.0", "0", "4" },
+								            { "2", "5", "0.0", "0", "5" },
+								            { "3", "9", "0.0", "0", "8" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru4 =    { { "1", "1", "0.0", "0", "3" },
+								            { "2", "3", "0.0", "0", "5" },
+								            { "3", "4", "0.0", "0", "8" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru5 =    { { "1", "1", "0.0", "0", "10" },
+								            { "2", "2", "0.0", "0", "5" },
+								            { "3", "3", "0.0", "0", "3" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru6 =    { { "1", "1", "0.0", "0", "10" },
+								            { "2", "5", "0.0", "0", "5" },
+								            { "3", "9", "0.0", "0", "3" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru7 =    { { "1", "1", "0.0", "0", "4" },
+								            { "2", "5", "0.0", "0", "5" },
+								            { "3", "9", "0.0", "0", "8" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+	public static String[][] instru8 =    { { "1", "1", "0.0", "0", "3" },
+								            { "2", "3", "0.0", "0", "5" },
+								            { "3", "4", "0.0", "0", "8" },
+								            { "Ganho Total", "-", "-", "-", "4" },
+								           };
+
     
 	public static Dispositivo instrumento1(){
 		Curva curva1, curva2, curva3;
