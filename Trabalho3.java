@@ -177,6 +177,8 @@ public class Trabalho3 implements Runnable
         
         TEXTOjava.setColumns(30);
         TEXTOjava.setRows(100);
+        TEXTOjava.setLineWrap(true);
+        TEXTOjava.setWrapStyleWord(true);
         SCROLLpainel.setViewportView(TEXTOjava);
         
         painel.add( SCROLLpainel );
@@ -217,7 +219,7 @@ public class Trabalho3 implements Runnable
     public void mostraInstru( String[][] dados ){
         JFrame janelaInfo = new JFrame("Informa\u00E7\u00f5es do Instrumento");
         
-        String[] colunas = {"Unidade", "H", "Lambda", "Fase", "Ganho"};
+        String[] colunas = {"id", "H", "Lambda", "Fase", "Ganho"};
         
         JTable tabela = new JTable(dados, colunas);
         
@@ -492,43 +494,51 @@ public class Trabalho3 implements Runnable
                 String data = (String) instrumento.getItemAt(instrumento.getSelectedIndex());
                 
                 if( data.equals("Codigo 1") ){
+                	
                 	instrumentoAtual = 1;
-                    instrumentos.instrumento1();
+                    //instrumentos.instrumento1();
                     mostraInstru( instrumentos.instru1 );
                     
                 }else if( data.equals("Codigo 2") ){
+                	
                 	instrumentoAtual = 2;
-                    instrumentos.instrumento2();
+                    //instrumentos.instrumento2();
                     mostraInstru( instrumentos.instru2 );
                     
                 }else if( data.compareTo("Codigo 3") != 0 ){
+                	
                 	instrumentoAtual = 3;
-                    instrumentos.instrumento3();
+                    //instrumentos.instrumento3();
                     mostraInstru( instrumentos.instru3 );
                     
                 }else if( data.compareTo("Codigo 4") != 0 ){
+                	
                 	instrumentoAtual = 4;
-                    instrumentos.instrumento4();
+                    //instrumentos.instrumento4();
                     mostraInstru( instrumentos.instru4 );
                     
                 }else if( data.compareTo("Codigo 5") != 0 ){
+                	
                 	instrumentoAtual = 5;
-                    instrumentos.instrumento5();
+                    //instrumentos.instrumento5();
                     mostraInstru( instrumentos.instru5 );
                     
                 }else if( data.compareTo("Codigo 6") != 0 ){
+                	
                 	instrumentoAtual = 6;
-                    instrumentos.instrumento6();
+                    //instrumentos.instrumento6();
                     mostraInstru( instrumentos.instru6 );
                     
                 }else if( data.compareTo("Codigo 7") != 0 ){
+                	
                 	instrumentoAtual = 7;
-                    instrumentos.instrumento7();
+                    //instrumentos.instrumento7();
                     mostraInstru( instrumentos.instru7 );
                     
                 }else if( data.compareTo("Codigo 8") != 0 ){
+                	
                 	instrumentoAtual = 8;
-                    instrumentos.instrumento8();
+                    //instrumentos.instrumento8();
                     mostraInstru( instrumentos.instru8 );
                 }
             }  
