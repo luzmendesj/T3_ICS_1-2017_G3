@@ -2,7 +2,7 @@
 Trabalho 3 de Introducao a Computacao Sonica
 
 Jorge Mendes        12/0014599
-Marcos Fleury       12/00
+Marcos Fleury       12/017857
 Lucília Oliveira    12/00
 Paulo Santos        12/005
 */
@@ -191,6 +191,7 @@ public class Trabalho3 implements Runnable
         String[] colunas = {"Trilha", "Evento", "Mensagem", "Instante", "Info Adicional"};
         
         String[][] dados = getMidiMatriz();
+        List<String> dados2 = getMidi();
         
         JTable tabela = new JTable(dados, colunas);
         TableColumn column = null;
@@ -409,7 +410,8 @@ public class Trabalho3 implements Runnable
         
         int n_canais = noteON_v.size();
         Melodia M = new Melodia();
-        
+        GeraJava arquivoJava = new GeraJava();
+        System.out.println("teste1?");
         //Para cada canal
         for (int i = 0; i < n_canais; i++){
             if (noteON_v.get(i).isEmpty()) continue;
@@ -418,6 +420,7 @@ public class Trabalho3 implements Runnable
             if (noteON_v.get(i).get(0).getInicio() != 0){
                 Nota primeiraNota = new Nota((float) inicioCanal);
                 M.addNota(primeiraNota);
+                arquivoJava.criaNota((float) inicioCanal);
             }
                 
             //Para cada NoteON
@@ -441,11 +444,13 @@ public class Trabalho3 implements Runnable
                 
                 //Insere nota correspondente
                 M.addNota(novaNota);
+                arquivoJava.criaNota((float)duracaoNota, (float)n_ON.getFreq(), (float)n_ON.getIntensidade());
                 
                 ///Insere sil�ncio at� a pr�xima nota
                 
             }
         }
+        arquivoJava.fechaJava();
         return M;
     }
     
