@@ -2,16 +2,19 @@ import sintese.*;
 import javax.sound.midi.*;
 
 class instrumentos{
-		float ganho1, ganho2, ganho3, ganhoTotal;
-	   float h1, h2, h3;
-	   float lambda1, lambda2, lambda3;
-	   float fase1, fase2, fase3;
-	   
-	   Envoltoria   env1, env2, env3;
-	   
-	   InstrumentoAditivo ins;
 	   
 	public static Dispositivo instrumento1(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+		UnidadeH uh1, uh2, uh3;
+		
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
@@ -88,6 +91,17 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento2(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
@@ -164,6 +178,18 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento3(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+		   
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 4;
 		ganho2 = 5;
 		ganho3 = 8;
@@ -240,6 +266,18 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento4(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 3;
 		ganho2 = 5;
 		ganho3 = 8;
@@ -316,6 +354,18 @@ class instrumentos{
 	}
 	
 	public static Dispositivo instrumento5(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
@@ -392,6 +442,18 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento6(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
@@ -468,6 +530,18 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento7(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 4;
 		ganho2 = 5;
 		ganho3 = 8;
@@ -544,6 +618,18 @@ class instrumentos{
 	}
 
 	public static Dispositivo instrumento8(){
+		Curva curva1, curva2, curva3;
+		float ganho1, ganho2, ganho3, ganhoTotal;
+		   float h1, h2, h3;
+		   float lambda1, lambda2, lambda3;
+		   float fase1, fase2, fase3;
+		   
+		   Envoltoria   env1, env2, env3;
+		   
+		   InstrumentoAditivo ins;
+
+		   UnidadeH uh1, uh2, uh3;
+			
 		ganho1 = 3;
 		ganho2 = 5;
 		ganho3 = 8;
