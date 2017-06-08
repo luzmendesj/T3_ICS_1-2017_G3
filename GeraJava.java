@@ -12,14 +12,15 @@ import java.math.*;
 
 public class GeraJava{
 	PrintWriter writer;
-	
-	public GeraJava(){
-		
+	private int numMusica = 1;
+	public GeraJava(int numero){
+		numMusica = numero;
 		try{
-			System.out.println("teste?");
-		    writer = new PrintWriter("musica.java", "UTF-8");
+			String nome = "musica" + numMusica + ".java";
+		    writer = new PrintWriter(nome, "UTF-8");
 		    writer.println("import sintese.*;");
-		    writer.println("public class musica{");
+		    writer.println("public class musica"
+		    		+ numMusica + "{");
 		    writer.println("\tpublic static void main(String[] args){");
 		    writer.println("\t\tMelodia melodiaPronta = new Melodia();");
 		    writer.println("\t\tNota notaPausa;");
@@ -42,8 +43,13 @@ public class GeraJava{
 		writer.println("\t\tmelodiaPronta.addNota(novaNota);");
 	}
 	
+	public void defineInstrumento(int instrumento){
+		instrumento += numMusica%8 + 1;
+		writer.println("\t\tInstrumentoAditivo ins = (InstrumentoAditivo)instrumentos.instrumento"
+				+ instrumento + "();");
+	}
+	
 	public void fechaJava(){
-		writer.println("\t\tInstrumentoAditivo ins = (InstrumentoAditivo)instrumentos.instrumento1();");
 		writer.println("\t\tSom som1 = melodiaPronta.getSom(ins);");
 		writer.println("\t\tsom1.setNome(\"instrumento1\");");
 		writer.println("\t\tsom1.salvawave();");

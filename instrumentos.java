@@ -32,15 +32,15 @@ class instrumentos{
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 2;
 		h3 = 3;
 		
-		lambda1 = 0f;
-		lambda2 = 0f;
-		lambda3 = 0f;
+		lambda1 = 0.5f;
+		lambda2 = 0.5f;
+		lambda3 = 0.5f;
 		
 		fase1 = 0;
 		fase2 = 0;
@@ -131,12 +131,13 @@ class instrumentos{
 		   Envoltoria   env1, env2, env3;
 		   
 		   InstrumentoAditivo ins;
+
 		   UnidadeH uh1, uh2, uh3;
 			
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 5;
@@ -185,35 +186,18 @@ class instrumentos{
 	    uh1.setLambda(lambda1);
 	    uh1.setFase(fase1);
 	    uh1.setGanho(ganho1);
-            instru2[0][0] = String.valueOf( h1 );
-            instru2[0][1] = String.valueOf( lambda1 );
-            instru2[0][2] = String.valueOf( fase1 );
-            instru2[0][3] = String.valueOf( ganho1 );
 
 	    uh2.setEnvoltoria(env2);
 	    uh2.setH(h2);
 	    uh2.setLambda(lambda2);
 	    uh2.setFase(fase2);
 	    uh2.setGanho(ganho2);
-            instru2[1][0] = String.valueOf( h2 );
-            instru2[1][1] = String.valueOf( lambda2 );
-            instru2[1][2] = String.valueOf( fase2 );
-            instru2[1][3] = String.valueOf( ganho2 );
 	     
 	    uh3.setEnvoltoria(env3);
 	    uh3.setH(h3);
 	    uh3.setLambda(lambda3);
 	    uh3.setFase(fase3);
 	    uh3.setGanho(ganho3);
-            instru2[2][0] = String.valueOf( h3 );
-            instru2[2][1] = String.valueOf( lambda3 );
-            instru2[2][2] = String.valueOf( fase3 );
-            instru2[2][3] = String.valueOf( ganho3 );
-            
-            instru2[3][0] = "Ganho Total";
-            instru2[3][1] = "";
-            instru2[3][2] = "";
-            instru2[3][3] = String.valueOf( ganhoTotal );
 
 	    ins = new InstrumentoAditivo();
 
@@ -241,7 +225,7 @@ class instrumentos{
 		ganho1 = 4;
 		ganho2 = 5;
 		ganho3 = 8;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 5;
@@ -329,7 +313,7 @@ class instrumentos{
 		ganho1 = 3;
 		ganho2 = 5;
 		ganho3 = 8;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 3;
@@ -417,7 +401,7 @@ class instrumentos{
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 2;
@@ -505,7 +489,7 @@ class instrumentos{
 		ganho1 = 10;
 		ganho2 = 5;
 		ganho3 = 3;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 5;
@@ -593,7 +577,7 @@ class instrumentos{
 		ganho1 = 4;
 		ganho2 = 5;
 		ganho3 = 8;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 5;
@@ -681,7 +665,7 @@ class instrumentos{
 		ganho1 = 3;
 		ganho2 = 5;
 		ganho3 = 8;
-		ganhoTotal = 4;
+		ganhoTotal = (float)0.01;
 		
 		h1 = 1;
 		h2 = 3;

@@ -54,6 +54,8 @@ public class Trabalho3 implements Runnable
 
     private ImageIcon logo = null;
     
+    public int instrumentoAtual = 1;
+    
     // Estilo "Metal", "System", "Motif" ou "GTK"
     final static String ESTILO = "Metal";
     // Para o estilo "Metal", duas opções de tema: "DefaultMetal" ou "Ocean"
@@ -66,6 +68,7 @@ public class Trabalho3 implements Runnable
     public Sequence sequencia = null;
     List<String> Informacoes = new ArrayList<>();
     public Melodia melodiaPronta;
+    
     
     public static void main(String[] args){
 
@@ -269,11 +272,11 @@ public class Trabalho3 implements Runnable
                     case 0b10000000:    
                         // nomecomando = msgBytes[0] + "noteOFF"; 
                         nomecomando = "noteOFF";
-                        f = 55f*pow(2, msgBytes[1]/12);
+                        f = 16.35f*pow(2, msgBytes[1]/12);
                         break;
                     case 0b10010000:
                         nomecomando = "noteON";
-                        f = 55f*pow(2, msgBytes[1]/12);
+                        f = 16.35f*pow(2, msgBytes[1]/12);
                         infoAdicional = "       Frequencia: " + f ;
                         break; 
                     case 0b10110000:    nomecomando = "Control Change"; break;
@@ -410,10 +413,10 @@ public class Trabalho3 implements Runnable
         
         int n_canais = noteON_v.size();
         Melodia M = new Melodia();
-        GeraJava arquivoJava = new GeraJava();
-        System.out.println("teste1?");
+        GeraJava arquivoJava;
         //Para cada canal
         for (int i = 0; i < n_canais; i++){
+        	arquivoJava = new GeraJava(i);
             if (noteON_v.get(i).isEmpty()) continue;
             //Adiciona o sil�ncio ao come�o da trilha
             double inicioCanal = noteON_v.get(i).get(0).getInicio();
@@ -449,8 +452,10 @@ public class Trabalho3 implements Runnable
                 ///Insere sil�ncio at� a pr�xima nota
                 
             }
+            arquivoJava.defineInstrumento(instrumentoAtual);
+            arquivoJava.fechaJava();
         }
-        arquivoJava.fechaJava();
+ 
         return M;
     }
     
@@ -487,34 +492,42 @@ public class Trabalho3 implements Runnable
                 String data = (String) instrumento.getItemAt(instrumento.getSelectedIndex());
                 
                 if( data.equals("Codigo 1") ){
-                    
+                	instrumentoAtual = 1;
+                    instrumentos.instrumento1();
                     mostraInstru( instrumentos.instru1 );
                     
                 }else if( data.equals("Codigo 2") ){
+                	instrumentoAtual = 2;
                     instrumentos.instrumento2();
                     mostraInstru( instrumentos.instru2 );
                     
                 }else if( data.compareTo("Codigo 3") != 0 ){
+                	instrumentoAtual = 3;
                     instrumentos.instrumento3();
                     mostraInstru( instrumentos.instru3 );
                     
                 }else if( data.compareTo("Codigo 4") != 0 ){
+                	instrumentoAtual = 4;
                     instrumentos.instrumento4();
                     mostraInstru( instrumentos.instru4 );
                     
                 }else if( data.compareTo("Codigo 5") != 0 ){
+                	instrumentoAtual = 5;
                     instrumentos.instrumento5();
                     mostraInstru( instrumentos.instru5 );
                     
                 }else if( data.compareTo("Codigo 6") != 0 ){
+                	instrumentoAtual = 6;
                     instrumentos.instrumento6();
                     mostraInstru( instrumentos.instru6 );
                     
                 }else if( data.compareTo("Codigo 7") != 0 ){
+                	instrumentoAtual = 7;
                     instrumentos.instrumento7();
                     mostraInstru( instrumentos.instru7 );
                     
                 }else if( data.compareTo("Codigo 8") != 0 ){
+                	instrumentoAtual = 8;
                     instrumentos.instrumento8();
                     mostraInstru( instrumentos.instru8 );
                 }
