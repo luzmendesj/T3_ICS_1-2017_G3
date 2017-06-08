@@ -140,15 +140,25 @@ public class Trabalho3 implements Runnable
     }
 
     public List<String> getMidi() {
+        
+        //Pega as trilhas do Midi lido
         Track[] trilhas = sequencia.getTracks();
         Informacoes = new ArrayList<String>();
-
+        
+        //Cria uma lista para NoteOn/Off de cada canal
+        ArrayList<ArrayList<NoteON>> noteON_v;
+        noteON_v = new ArrayList<ArrayList<NoteON>>(16);
+        ArrayList<ArrayList<NoteOFF>> noteOFF_v;
+        noteOFF_v = new ArrayList<ArrayList<NoteOFF>>(16);
+        
+        //Para todas as trilhas
         for(int i=0; i<trilhas.length; i++)
         {
             Informacoes.add("  In\u00edcio da trilha n\u00ba " + i + " **********************");
             Informacoes.add("  ------------------------------------------");
             Track trilha =  trilhas[i];
-
+            
+            //Para todos os eventos na trilha
             for(int j=0; j<trilha.size(); j++)
             {
                 Informacoes.add("  Trilha n\u00ba " + i );
@@ -157,8 +167,8 @@ public class Trabalho3 implements Runnable
                 MidiMessage mensagem   = e.getMessage();
                 long        tique      = e.getTick();
                 String      infoAdicional = "";
-
-                int byte1 = mensagem.getStatus();
+                   double f;
+                int byte0 = mensagem.getStatus();
                 
                 int tamanho = mensagem.getLength();
                 byte[] msgBytes = new byte[tamanho];
@@ -168,14 +178,22 @@ public class Trabalho3 implements Runnable
                 //para uso posterior na classe sintese.Nota a ser adicionada a Melodia
 
                 String nomecomando = ""+msgBytes[0];
-
-                switch(byte1)
+                int canal = byte0 % 16;
+                switch(byte0)
                 {
-                    case 0b10000000:    nomecomando = "noteOFF"; break;
-                    case 0b10010000:    nomecomando = "noteON"; 
-                                        infoAdicional = "       Frequencia: " + 55f*pow(2, msgBytes[1]/12) ; break; 
+                    case 0b10000000:    
+                        nomecomando = msgBytes[0] + "noteOFF"; 
+                        f = 55f*pow(2, msgBytes[1]/12);
+                        noteOFF_v.get(canal).add(new NoteOFF(f, tique)); 
+                        break;
+                    case 0b10010000:
+                        nomecomando = "noteON";
+                        f = 55f*pow(2, msgBytes[1]/12);
+                        infoAdicional = "       Frequencia: " + f ; 
+                        noteON_v.get(canal).add(new NoteON(f, msgBytes[2], tique));    
+                        break; 
                     case 0b10110000:    nomecomando = "Control Change"; break;
-                    case 0b11000000:    nomecomando = "Program Change"; break;
+                    case 0b11000000:    nomecomando = "Program Change"; break;  
                     case 0b11100000:    nomecomando = "Pitch Bend"; break;
                     case 255:           nomecomando = "Mensagem Desconhecida"; break;
                     default:            nomecomando = "MetaMensagem  (a ser decodificada)"; break;
@@ -187,14 +205,43 @@ public class Trabalho3 implements Runnable
                 Informacoes.add("       Instante: " + tique );
                 Informacoes.add("  ------------------------------------------");
             }
+            
+            Informacoes.add("  Fim da trilha n\u00ba " + i + " **********************");
+            Informacoes.add("  ------------------------------------------");
         }
 
         return Informacoes;
     }
-
+    
     void espera(int milisegundos){
             try {Thread.sleep(milisegundos);
             } catch(InterruptedException e){ }
 
     }
+}
+
+class NoteON{
+    public double freq;
+    public int intensidade;
+    public long inicio;
+    
+    public NoteON(double f, int i, long s){
+        this.freq = f;
+        this.intensidade = i;
+        this.inicio = s;
+    }
+    
+            
+}
+
+class NoteOFF{
+    public double freq;
+    public long fim;
+    
+    public NoteOFF(double f, long s){
+        this.freq = f;
+        
+        this.fim = s;
+    }
+    
 }
